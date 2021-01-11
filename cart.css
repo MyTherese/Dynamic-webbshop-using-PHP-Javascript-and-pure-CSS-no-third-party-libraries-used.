@@ -1,0 +1,27 @@
+body{
+    background-color:orange;
+
+}
+.containerShop{
+    margin: 80px auto;
+   
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: aquamarine;
+
+}
+.bodyShop{
+    background-color:white;
+    width: 100%;
+}
+th{
+    text-align: center;
+    padding: 5px;
+    background-color: aqua;
+}
+td{
+    text-align: center;
+    padding:2px;
+}
