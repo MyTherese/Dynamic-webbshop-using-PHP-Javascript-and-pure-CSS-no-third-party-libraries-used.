@@ -1,27 +1,201 @@
-body{
-    background-color:orange;
 
+
+/* background-color: #272727; */
+/* background-color: #FFDF6C ;
+border: 5px solid #f1bf08 ; */
+
+/* blå */
+/* background-color:#062F4F; */
+/* lila */
+/* grå */
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding:0;
 }
+
+html{
+    font-size: 15px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body{
+    margin:0;
+    text-decoration: none;
+    background-color: grey;
+  
+}
+
 .containerShop{
+    border-top: 2px solid darkorange;
+    border-bottom: 2px solid darkorange;
+    
+    background-color:lightgrey;
     margin: 80px auto;
+    padding: 20px;
+  
+}
+
+.cartTable{
+    border: 2px dotted darkorange;
+    padding: 10px; 
+    background-color: white;
+    margin-bottom: 30px;
+   
    
 }
+.quantitys{
+   padding: 10px;
+    width: 70px;
+    height: 20px;
+   
+
+
+}
+
+
+
+
+
+
+.discountTable{
+    border: 2px dotted darkorange;
+    padding: 10px; 
+    background-color: white;
+    text-align: center;
+   
+}
+
+.discount_code{
+    padding: 10px;
+    width: 350px;
+}
+.buttonDiscount{
+    height:40px;
+    width: 50px;
+    background-color: darkorange;
+    border-radius: 5px;
+
+}
+
+
+
+.favoritTable{
+    border: 2px dotted darkorange;
+    padding: 20px; 
+    background-color: white;
+
+}
+
 table{
     width: 100%;
     border-collapse: collapse;
-    background-color: aquamarine;
-
+    background-color:lightgrey;
+    /* border: 10px solid black; */
 }
+
 .bodyShop{
     background-color:white;
     width: 100%;
 }
 th{
-    text-align: center;
+    text-align: left;
     padding: 5px;
-    background-color: aqua;
+    background-color:white;
 }
 td{
-    text-align: center;
+    text-align: left;
     padding:2px;
+}
+
+
+/* large tablets style*/
+@media screen and (min-width: 940px){
+
+    * {
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding:0;
+    }
+    
+    html{
+        font-size: 20px;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+    
+    body{
+        margin:0;
+        text-decoration: none;
+        background-color: grey;
+      
+    }
+    
+    .containerShop{
+        border: 2px solid darkorange;
+        background-color:lightgrey;
+        margin: 80px auto;
+        padding: 20px;
+      
+    }
+    
+    .cartTable{
+        border: 2px dotted darkorange;
+        padding: 10px; 
+        background-color: white;
+        margin-bottom: 30px;
+       
+       
+    }
+    
+    .discountTable{
+        border: 2px dotted darkorange;
+        padding: 10px; 
+        background-color: white;
+    }
+
+    .discount_code{
+        padding: 10px;
+        width: 550px;
+    }
+    .buttonDiscount{
+        height:40px;
+        width: 50px;
+    
+    }
+    
+    .favoritTable{
+        border: 2px dotted darkorange;
+        padding: 20px; 
+        background-color: white;
+    
+    }
+    
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        background-color:lightgrey;
+        /* border: 10px solid black; */
+    }
+    
+    .bodyShop{
+        background-color:white;
+        width: 100%;
+    }
+    th{
+        text-align: left;
+        padding: 5px;
+        background-color:white;
+    }
+    td{
+        text-align: left;
+        padding:2px;
+    }
+    
+    
+    
+
+}
+
+
+@media screen and (min-width: 1200px) {
 }
