@@ -1,4 +1,7 @@
 
+
+
+
 <?php
 //add to cart 
 // If the user clicked the add to cart button on the product page we can check for the form data
@@ -124,14 +127,16 @@ if ($products_in_cart) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="cart.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="containerShop">
-    <h1>Your shopping cart</h1>
+    <h2>Your shopping cart</h2>
 
     <form action="index.php?page=cart" method="post" onsubmit="return validationDiscount();"> 
 
-        <table>
+        <table class="cartTable">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -144,27 +149,25 @@ if ($products_in_cart) {
             <tbody class="bodyShop">
                 <?php if (empty($products)): ?>
                 <tr>
-                    <td>You have no products added in your Shopping Cart</td>
+                    <td>You have no tickets added in your Shopping Cart</td>
                 </tr>
                 
                 <?php else: ?>
                 <?php foreach ($products as $product): ?>
                   
                 <tr>
-
-            
                     <td>
-                    <a href="index.php?page=cart&remove=<?=$product['id']?>">Remove</a>
+                    <a href="index.php?page=cart&remove=<?=$product['id']?>">X</a>
                     <?=$product['title']?>
                     </td>
             
-                    <td class="price">&dollar;<?=$product['price']?></td>
+                    <td class="price"><?=$product['price']?>kr</td>
 
                     <td class="quantity">
-                        <input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
+                        <input type="number"  class="quantitys" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
                     </td>
 
-                    <td class="price">&dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
+                    <td class="price"><?=$product['price'] * $products_in_cart[$product['id']]?>kr</td>
 
                 </tr>
                 <?php endforeach; ?>
@@ -175,27 +178,41 @@ if ($products_in_cart) {
 
 
 
-        <table>
+    <div class="discountTable">
         <div class="subtotal">
-            <span class="text">Subtotal:</span>
+        <div class="discount">
+<span id="errorMessage_code" class="error-message">
+				<?php
+				if (!empty($message)) {
+					echo $message;
+                }
+                ?></span>
+
+    <label for="promo_code"></label>
+    <input id="discountCode" type="text" name="discountCode" class="discount_code" size="30" placeholder="Apply Discount Code"/>
+    
+    <button id="apply_discount" value="submit" class="buttonDiscount" name="apply_discount">Apply</button>
+
+</div>
             <input type="hidden" name="totalPrice"
 						id="totalPrice"
-						value="">
-            <span class="price">&dollar;<?=$subtotal?></span>
+                        value="">
+                        <span class="text">New Total:</span>
+            <span class="price"><?=$subtotal?>kr</span>
         </div>
 
 
         <div class="discount">
         <label for="discount_output">Discount:</label>
-        <span class="discount_output">kr<?=$discount['price']?></span>
-            <input type="hidden" id="discountOutput"name="discountOutput" value="">
+        <span class="discount_output"><?=$discount['price']?>kr</span>
+            <!-- <input type="hidden" id="discountOutput"name="discountOutput" value=""> -->
         </div>
 
        
 
         <div class="subtotal_after_disc">
-        <label for="subtotal_after_discount">Subtotal after discount:</label>
-            <span class="subtotal_after_discount">kr<?=$subtotal - $discount['price']?></span>
+        <label for="subtotal_after_discount">Total after discount:</label>
+            <span class="subtotal_after_discount"><?=$subtotal - $discount['price']?>kr</span>
             <input type="hidden" name="totalPrice_after_discount"
 						id="totalPrice_after_discount" value="">
         </div>
@@ -208,42 +225,38 @@ if ($products_in_cart) {
         </div> 
 
 
-<div class="discount">
-<span id="errorMessage_code" class="error-message">
-				<?php
-				if (!empty($message)) {
-					echo $message;
-                }
-                ?></span>
 
-    <label for="promo_code">Discount Code:</label>
-    <input id="discountCode" type="text" name="discountCode" class="discount-code" size="15" placeholder="discountCode"/>
-    
-    <button id="apply_discount" value="submit" class="btn btn-default" name="apply_discount" placeholder="Apply Discount">Apply</button>
-
-</div>
 
 </div>
 
 
 </form>
+</div>
+<!-- encode jpg to localstorage decode when load on canvas -->
+
+<div class="favoritTable">
+<button id ="" type="button" onclick="someTest()">Click to se your favorites..</button>
+<canvas></canvas>
+<!-- <p src="" id="some"></p>  -->
+
+<!-- <img id ="some"></img> -->
 
 </div>
-
-<ul>
-    <img src="" height="200" width="200" id="tableBanner"/>
-</ul>
-
-<p id="demo"></p>
-
-
-
 
 </body>
  </html>
 
- <script type="text/javascript" src="cart.js"></script>
-    
+
+ <script>
+function someTest() {
+const arrayList = document.getElementById("some").innerHTML = JSON.parse(localStorage.getItem("myImg"));
+console.log(arrayList);
+}
+
+ </script>
+
+ <script type="text/javascript" src="localStorage.js"></script> 
+
 
 
 
