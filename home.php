@@ -5,10 +5,6 @@
 $stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_added DESC LIMIT 6');
 $stmt->execute();
 $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-
-
 ?>
 
 
@@ -36,15 +32,18 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="index.php?page=productCard&id=<?=$recently_added_products[$k]['id']?>">
         
         <div class="imagebox">
-        <img src="image/<?=$recently_added_products[$k]['image']?>" type="file" width="200" height="200" id="myImage" alt="<?=$recently_added_products[$k]['title']?>">
-        
 
+        <img src="image/<?=$recently_added_products[$k]['image']?>" width="250" height="250" id="myImage" alt="<?=$recently_added_products[$k]['title']?>">
+       
+      
+        
         <div class="titlebox">
         <span class="name"><?=$recently_added_products[$k]['title']?></span>
         </div> 
         </a>
 
-        <button id ="image/<?=$recently_added_products[$k]['image']?>" onclick="saveFavorit(this.id)" class="fa fa-heart-o">
+
+        <button id ="image/<?=$recently_added_products[$k]['image']?>" onclick="saveFavorit(this.id)" src ="image/<?=$recently_added_products[$k]['image']?>" class="fa fa-heart-o">
         </button>
 
 
@@ -52,13 +51,13 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <?php endforeach; ?>
+
         </div>
 
-        <button id ="displayFavo" type="button" onclick="displayArray()">Click to se your favorites..</button>
+       
+        <canvas id="myCanvas" height="250" width="250"></canvas>
 
-        <p id="demo"></p>
-        
-        <!-- <img src=""></img> -->
+      
 
 </body>
 
