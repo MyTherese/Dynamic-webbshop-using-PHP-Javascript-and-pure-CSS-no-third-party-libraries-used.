@@ -232,28 +232,52 @@ if ($products_in_cart) {
 
 </form>
 </div>
-<!-- encode jpg to localstorage decode when load on canvas -->
 
-<div class="favoritTable">
-<button id ="" type="button" onclick="someTest()">Click to se your favorites..</button>
-<canvas></canvas>
-<!-- <p src="" id="some"></p>  -->
+<button id ="displayFavo" onclick= "getSome()">Test</button>
 
-<!-- <img id ="some"></img> -->
+<!-- <canvas id="myCanvas"></canvas> -->
+<img src="" id="oFavoritList"></img>
+
+<!-- <button id ="displayFavo" onclick= "getBase64Image()">FavoritList</button> -->
+
 
 </div>
 
 </body>
  </html>
 
-
  <script>
-function someTest() {
-const arrayList = document.getElementById("some").innerHTML = JSON.parse(localStorage.getItem("myImg"));
-console.log(arrayList);
-}
+ 
+ function getSome(){
 
+
+    var dataImage = localStorage.getItem("myImg");
+    bannerImg = document.getElementById("oFavoritList");
+    bannerImg.src = dataImage;
+
+
+
+ // STEP 1, GET THE IMAGE IN CART.PHP 
+// STEP 2, USE IMG SRC FROM ARRAY 
+        // var img = new Image();
+        // img.src = imgAsDataURL;
+
+        // some = canvas.appendChild(img);
+        // console.log(some);
+
+
+    
+    // var canvas = document.createElement("canvas");
+    // document.getElementById("myCanvas").innerHTML = localStorage.getItem("myImg");
+
+ }
+
+ 
+ 
  </script>
+
+
+
 
  <script type="text/javascript" src="localStorage.js"></script> 
 

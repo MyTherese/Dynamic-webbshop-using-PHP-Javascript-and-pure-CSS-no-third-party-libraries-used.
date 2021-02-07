@@ -42,6 +42,8 @@ echo <<<EOT
 	</head>
   <body>
         <header>
+
+       
         <video id="my-video" autoplay muted loop playsinline>   
         <source src="./image/rock.mp4" type="video/mp4"/>
         <li><a href="index.php" class="logo">Experience Music</a></li>
@@ -49,6 +51,8 @@ echo <<<EOT
         </video>
 
         <div class="newsHeader">News for 2021</div>
+
+
 
             <nav class="header-nav">
                   <li><a class="fa fa-search"></a></li>
