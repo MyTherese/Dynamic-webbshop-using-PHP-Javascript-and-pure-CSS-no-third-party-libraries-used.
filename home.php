@@ -43,7 +43,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </a>
 
 
-        <button id ="image/<?=$recently_added_products[$k]['image']?>" onclick="saveFavorit(this.id)" src ="image/<?=$recently_added_products[$k]['image']?>" class="fa fa-heart-o">
+        <button src ="image/<?=$recently_added_products[$k]['image']?>" id ="image/<?=$recently_added_products[$k]['image']?>" onclick="saveFavorit(this.id)" class="fa fa-heart-o">
         </button>
 
 
@@ -53,9 +53,9 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
 
         </div>
-
-       
-        <canvas id="myCanvas" height="250" width="250"></canvas>
+        
+        <canvas id="myCanvas" height="400" width="1000"></canvas>
+        <button onclick = getBase64ArrayOfImg() >Your Favorits</button>
 
       
 
