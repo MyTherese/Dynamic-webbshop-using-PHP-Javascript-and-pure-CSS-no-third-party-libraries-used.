@@ -42,10 +42,9 @@ function saveFavorit(clicked_id) {
 
     var xb=0, yb=0;
 
-    var imgs = [];
+    var imgs = [];   
 
     for(var i = 0; i < favoritList.length; i++){
-        
         imgs[i] = new Image();
         imgs[i].src =favoritList[i];
 
@@ -54,14 +53,25 @@ function saveFavorit(clicked_id) {
             something = imgContext.drawImage(this, xb, yb);
             xb += 200;
             yb += 0;
+
+            // this works
+            imgAsDataURL = canvas.toDataURL("data:image/jpg;base64,");
+            console.log(imgAsDataURL);
+
+            // this works
+            localStorage.setItem("myImg", imgAsDataURL);
+            console.log(localStorage);
+            
+            // this works 
+            var dataImage = localStorage.getItem("myImg");
+            console.log(dataImage);
+            
+
+            
         }
     }
+   
     
-        imgAsDataURL = canvas.toDataURL("data:image/jpg;base64,");
-        console.log(imgAsDataURL);
-        
-        localStorage.setItem("myImg", imgAsDataURL);
-        console.log(localStorage);
     }
 
 

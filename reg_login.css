@@ -3,11 +3,11 @@
     margin: 0px; 
     padding: 0px;
     box-sizing: border-box;
+    font-size: 15px;
     font-family: 'Roboto Condensed', sans-serif;
+
 }
 /* form inlog and registration */
-
-
 .image{
     position: relative;
     background-position: center;
@@ -100,8 +100,4 @@
     }
 
 
-    .form_check_label{
-        text-align: justify;
-        color: aqua;
-    }
-
+  

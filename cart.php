@@ -251,7 +251,7 @@ if ($products_in_cart) {
  function getSome(){
 
     var dataImage = localStorage.getItem("myImg");
-    // console.log(dataImage);
+    console.log(dataImage);
     bannerImg = document.getElementById("oFavoritList");
     bannerImg.src = dataImage;
 
