@@ -1,13 +1,5 @@
 
 
-/* background-color: #272727; */
-/* background-color: #FFDF6C ;
-border: 5px solid #f1bf08 ; */
-
-/* blå */
-/* background-color:#062F4F; */
-/* lila */
-/* grå */
 * {
     box-sizing: border-box;
     margin: 0 auto;
@@ -22,8 +14,6 @@ html{
 body{
     margin:0;
     text-decoration: none;
-    background-color: grey;
-  
 }
 
 .containerShop{
@@ -33,7 +23,6 @@ body{
     background-color:lightgrey;
     margin: 80px auto;
     padding: 20px;
-  
 }
 
 .cartTable{
@@ -41,29 +30,19 @@ body{
     padding: 10px; 
     background-color: white;
     margin-bottom: 30px;
-   
-   
 }
+
 .quantitys{
-   padding: 10px;
+    padding: 10px;
     width: 70px;
     height: 20px;
-   
-
-
 }
-
-
-
-
-
 
 .discountTable{
     border: 2px dotted darkorange;
     padding: 10px; 
     background-color: white;
     text-align: center;
-   
 }
 
 .discount_code{
@@ -75,16 +54,13 @@ body{
     width: 50px;
     background-color: darkorange;
     border-radius: 5px;
-
 }
-
 
 
 .favoritTable{
     border: 2px dotted darkorange;
     padding: 20px; 
     background-color: white;
-
 }
 
 table{
@@ -143,8 +119,6 @@ td{
         padding: 10px; 
         background-color: white;
         margin-bottom: 30px;
-       
-       
     }
     
     .discountTable{
@@ -190,9 +164,6 @@ td{
         text-align: left;
         padding:2px;
     }
-    
-    
-    
 
 }
 

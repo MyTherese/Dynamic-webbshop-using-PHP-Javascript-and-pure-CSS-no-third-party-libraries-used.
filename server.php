@@ -28,7 +28,7 @@ $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 // when logged in show logged out
 $logged_out = !empty($_SESSION['username']) ? 
       '<a href="logout.php">Logout</a>' :
-      '<a href="login.php" class="login">login</a>';
+      '<a href="login.php" class="login">Login</a>';
 
 echo <<<EOT
 <!DOCTYPE html>
@@ -43,28 +43,24 @@ echo <<<EOT
   <body>
         <header>
 
-       
         <video id="my-video" autoplay muted loop playsinline>   
         <source src="./image/rock.mp4" type="video/mp4"/>
         <li><a href="index.php" class="logo">Experience Music</a></li>
-        <li><a href="index.php?page=products">Upcoming shows</a></li>
         </video>
 
         <div class="newsHeader">News for 2021</div>
 
 
-
+      
             <nav class="header-nav">
-                  <li><a class="fa fa-search"></a></li>
                   <li><a href="index.php" class="logo">Experience Music</a></li>
-                  <li class = "upcomingshows"><a href="index.php?page=products">Upcoming shows</a></li>
-                  $logged_out
+                  <li>$logged_out</li>
                   <li><a href="index.php?page=cart">
-        
                   <i class="fas fa-shopping-cart"></i>
                   <span>$num_items_in_cart</span></a></li>
             </nav> 
-            <div class="bannerDiscount"> Not yet a member? Get 20% off on your first phurchase!</div>
+           
+            <a href="login.php" class="bannerDiscount" style="color:black"> Not yet a member? Get 20% off on your first phurchase!</a>
         </header>
         </body>
         </html>

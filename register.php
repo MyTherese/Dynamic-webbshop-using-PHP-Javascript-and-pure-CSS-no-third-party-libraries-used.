@@ -1,73 +1,91 @@
 
 <?php 
-
 session_start(); 
-// require 'lib/password.php';
 include_once 'server.php';
 require 'errors.php';
 $errors = array();
+
+
 // $username = "";
 // $mail = "";
-// $message = '';
-
-
-
-
-
+// $password = "";
+// $confirm_password = "";
 
 
 // validation and user data saved in database 
-if (isset($_POST['register'])) 
-{
-  $pdo = config::pdo_connect_mysql();
-//   $pdo = new PDO("mysql:host=localhost;dbname=tickets","root","root");
-// } catch (PDOException $exc) {
-//     echo $exc->getMessage();
-//     exit();
-// }
-  $username = isset($_POST['username']) ?  $_POST['username'] : null;
-  $mail = isset($_POST['mail']) ?  $_POST['mail'] : null;
-  $password = isset($_POST['password']) ?  $_POST['password'] : null;
-  // $password = $_POST['password'];
+if (isset($_POST['register'])) {
 
-      //Check the name and make sure that it isn't a blank/empty string.
-      if(strlen(trim($username)) === 0){
-        //Blank string, add error to $errors array.
-        $errors[] = "You must enter your name!";
-    }
-    //Make sure that the email address is valid.
-    if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        //$email is not a valid email. Add error to $errors array.
-        $errors[] = "That is not a valid email address!";
+
+  $username = trim($_POST['username']);
+  $mail = trim($_POST['mail']);
+  $password = trim($_POST['password']);
+  $confirm_password  = trim($_POST['confirm_password']);
+
+  $isValid = true;
+  if (is_bool($isValid) === true){
+  echo "Yes is a boolean";
+  }
+
+    if($username == '' || $mail == '' || $password == '' || $confirm_password == ''){
+      $isValid = false;
+      $errors[] = "Please fill all fields.";
     }
 
-    
-      // validate password 
-      if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        //$email is not a valid email. Add error to $errors array.
-        $errors[] = "That is not a valid email address!";
+    if($isValid && !filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+      $isValid = false;
+      $errors[] = "Invalid Email-ID.";
+    }
+    if($isValid && ($password != $confirm_password)){
+      $isValid = false;
+      $errors[] = "Password do not match!";
     }
 
+    // PASSWORD M UST ALSO BE MORE THEN 8 CARACTERS
 
+      if($isValid){
 
-  // user input data posted in database
-      $pdoQuery = "INSERT INTO `users`(`username`, `mail`, `password`) VALUES (:username,:mail,:password)";
-      
-      $pdoResult = $pdo->prepare($pdoQuery);
-      $pdoExec = $pdoResult->execute(array(":username"=>$username,":mail"=>$mail,":password"=>$password));
+        $pdo = config::pdo_connect_mysql();
+        
+          $query = $pdo->prepare( "SELECT * FROM `users` WHERE `mail` = ?" );
+
+          $query->bindValue( 1, $mail);
+          $query->execute();
+          if( $query->rowCount() > 0 ) { 
+            $isValid = false;
+            $errors[] = "Email already exists!";  
+          }
+
+        $stmt = $pdo->prepare( "SELECT username FROM users WHERE username = :username" );
+
+          $stmt->bindValue( ':username', $username);
+          $stmt->execute();
+          if( $stmt->rowCount() > 0 ) { 
+            $isValid = false;
+            $errors[] = "Username already exists!";
+          }
+  }
 
   
+    if($isValid){
+  
+    $pdo = config::pdo_connect_mysql();
+        // user input data posted in database
+      $pdoFormQuery = "INSERT INTO `users`(`username`, `mail`, `password`) VALUES (:username,:mail,:password)";
+      
+      $pdoResult = $pdo->prepare($pdoFormQuery);
+      $pdoExec = $pdoResult->execute(array(":username"=>$username,":mail"=>$mail,":password"=>$password));
         // check if mysql insert query successful
         if($pdoExec)
         { 
-            // $message = "Success, you can now log in";
-            // echo "<script type='text/javascript'>alert('$message');</script>"
-            echo 'Success data in database';
+            echo 'success';
         }else{
-            echo 'Data Not Inserted';
+          echo 'didnt work!';
+          // echo '<script>alert("Något gick fel, försök igen!")</script>';
         }
-    
       }
+
+      }
+        
     
     ?>
 
@@ -114,7 +132,7 @@ if (isset($_POST['register']))
 
           <div class="input-group">
             <label>Confirm Password</label>
-            <input type="password" name="password" name="password" onfocus="this.value=''">
+            <input type="password" name="confirm_password" onfocus="this.value=''">
           </div>
 
           <!-- användarvillkor -->

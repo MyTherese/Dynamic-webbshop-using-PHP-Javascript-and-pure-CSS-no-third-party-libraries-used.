@@ -1,0 +1,18 @@
+
+
+
+* {
+        margin: 0px; 
+        padding: 0px;
+        box-sizing: border-box; 
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+
+
+
+.cart_container{
+    display:'block';
+    background-color: aqua;
+
+}

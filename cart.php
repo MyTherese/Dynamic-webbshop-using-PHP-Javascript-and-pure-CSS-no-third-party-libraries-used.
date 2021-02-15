@@ -1,9 +1,5 @@
 
-
-
-
 <?php
-//add to cart 
 // If the user clicked the add to cart button on the product page we can check for the form data
 if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
     // Set the post variables so we easily identify them, also make sure they are integer
@@ -249,7 +245,6 @@ if ($products_in_cart) {
  <script>
  
  function getSome(){
-
     var dataImage = localStorage.getItem("myImg");
     console.log(dataImage);
     bannerImg = document.getElementById("oFavoritList");
@@ -275,10 +270,6 @@ if ($products_in_cart) {
  
  
  </script>
-
-
-
-
  <script type="text/javascript" src="localStorage.js"></script> 
 
 
