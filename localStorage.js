@@ -1,9 +1,7 @@
 // home.php
 
 const favoritArray = [];
-console.log(favoritArray);
-
-
+// console.log(favoritArray);
 
 function saveFavorit(clicked_id) {
     var heartFavorit = document.getElementById(clicked_id);
@@ -27,21 +25,19 @@ function saveFavorit(clicked_id) {
             favoritArray.splice(index, 1);
             console.log(index);
 
-        
             }
 
     }
 
-
+// home.php
     function getBase64ArrayOfImg() {
     var favoritList = favoritArray;
-    console.log(favoritList);
+    // console.log(favoritList);
 
     var canvas= document.getElementById("myCanvas");
     imgContext = canvas.getContext("2d");
 
     var xb=0, yb=0;
-
     var imgs = [];   
 
     for(var i = 0; i < favoritList.length; i++){
@@ -54,25 +50,20 @@ function saveFavorit(clicked_id) {
             xb += 200;
             yb += 0;
 
-            // this works
             imgAsDataURL = canvas.toDataURL("data:image/jpg;base64,");
-            console.log(imgAsDataURL);
-
-            // this works
+            // console.log(imgAsDataURL);
             localStorage.setItem("myImg", imgAsDataURL);
-            console.log(localStorage);
-            
-            // this works 
+            // console.log(localStorage);
             var dataImage = localStorage.getItem("myImg");
-            console.log(dataImage);
-            
-
-            
+            // console.log(dataImage); 
         }
     }
-   
-    
+
     }
+
+
+
+
 
 
 //  cart.js
