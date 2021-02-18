@@ -1,6 +1,5 @@
 <?php
 
-
 class config {
 public static function pdo_connect_mysql() {
   $HOST = 'localhost';
@@ -23,14 +22,14 @@ echo "connected";
 
 function template_header($title) {
 // Get the amount of items in the shopping cart, this will be displayed in the header.
-$num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+  $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 
 // when logged in show logged out
-$logged_out = !empty($_SESSION['username']) ? 
+  $logged_out = !empty($_SESSION['username']) ? 
       '<a href="logout.php">Logout</a>' :
       '<a href="login.php" class="login">login</a>';
 
-echo <<<EOT
+  echo <<<EOT
 <!DOCTYPE html>
 <html>
 	<head>
@@ -40,10 +39,8 @@ echo <<<EOT
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 
 	</head>
-  <body>
+    <body>
         <header>
-
-       
         <video id="my-video" autoplay muted loop playsinline>   
         <source src="./image/rock.mp4" type="video/mp4"/>
         <li><a href="index.php" class="logo">Experience Music</a></li>
@@ -51,9 +48,6 @@ echo <<<EOT
         </video>
 
         <div class="newsHeader">News for 2021</div>
-
-
-
             <nav class="header-nav">
                   <li><a class="fa fa-search"></a></li>
                   <li><a href="index.php" class="logo">Experience Music</a></li>
@@ -66,16 +60,12 @@ echo <<<EOT
             </nav> 
             <div class="bannerDiscount"> Not yet a member? Get 20% off on your first phurchase!</div>
         </header>
-        </body>
-        </html>
+    </body>
+</html>
 
 EOT;
-
 }
-
 ?>
-
-
 
 <?php
 // Template footer
@@ -86,11 +76,8 @@ echo <<<EOT
                 <p>&copy; $year, Shopping Cart System</p>
         </footer>
 EOT;
-
 }
-
-
-?>
+?> 
 
 
 

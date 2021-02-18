@@ -1,9 +1,8 @@
 
-
+/* color pallet */
 /* background-color: #272727; */
 /* background-color: #FFDF6C ;
 border: 5px solid #f1bf08 ; */
-
 /* blå */
 /* background-color:#062F4F; */
 /* lila */
@@ -41,68 +40,56 @@ body{
     padding: 10px; 
     background-color: white;
     margin-bottom: 30px;
-   
-   
 }
+
 .quantitys{
-   padding: 10px;
+    padding: 10px;
     width: 70px;
     height: 20px;
-   
-
-
 }
-
-
-
-
-
 
 .discountTable{
     border: 2px dotted darkorange;
     padding: 10px; 
     background-color: white;
     text-align: center;
-   
 }
 
 .discount_code{
     padding: 10px;
     width: 350px;
 }
+
 .buttonDiscount{
     height:40px;
     width: 50px;
     background-color: darkorange;
     border-radius: 5px;
-
 }
-
-
 
 .favoritTable{
     border: 2px dotted darkorange;
     padding: 20px; 
     background-color: white;
-
 }
 
 table{
     width: 100%;
     border-collapse: collapse;
-    background-color:lightgrey;
-    /* border: 10px solid black; */
+    background-color:lightgrey; 
 }
 
 .bodyShop{
     background-color:white;
     width: 100%;
 }
+
 th{
     text-align: left;
     padding: 5px;
     background-color:white;
 }
+
 td{
     text-align: left;
     padding:2px;
@@ -127,7 +114,6 @@ td{
         margin:0;
         text-decoration: none;
         background-color: grey;
-      
     }
     
     .containerShop{
@@ -135,16 +121,13 @@ td{
         background-color:lightgrey;
         margin: 80px auto;
         padding: 20px;
-      
     }
     
     .cartTable{
         border: 2px dotted darkorange;
         padding: 10px; 
         background-color: white;
-        margin-bottom: 30px;
-       
-       
+        margin-bottom: 30px; 
     }
     
     .discountTable{
