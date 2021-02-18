@@ -4,17 +4,13 @@ session_start();
 include_once 'server.php';
 require 'errors.php';
 $errors = array();
-
-
 // $username = "";
 // $mail = "";
 // $password = "";
 // $confirm_password = "";
 
-
 // validation and user data saved in database 
 if (isset($_POST['register'])) {
-
 
   $username = trim($_POST['username']);
   $mail = trim($_POST['mail']);
@@ -22,9 +18,9 @@ if (isset($_POST['register'])) {
   $confirm_password  = trim($_POST['confirm_password']);
 
   $isValid = true;
-  if (is_bool($isValid) === true){
-  echo "Yes is a boolean";
-  }
+    if (is_bool($isValid) === true){
+      echo "Yes is a boolean";
+    }
 
     if($username == '' || $mail == '' || $password == '' || $confirm_password == ''){
       $isValid = false;
@@ -42,30 +38,28 @@ if (isset($_POST['register'])) {
 
     // PASSWORD M UST ALSO BE MORE THEN 8 CARACTERS
 
-      if($isValid){
+    if($isValid){
 
-        $pdo = config::pdo_connect_mysql();
-        
-          $query = $pdo->prepare( "SELECT * FROM `users` WHERE `mail` = ?" );
+      $pdo = config::pdo_connect_mysql();
+      $query = $pdo->prepare( "SELECT * FROM `users` WHERE `mail` = ?" );
 
-          $query->bindValue( 1, $mail);
-          $query->execute();
-          if( $query->rowCount() > 0 ) { 
-            $isValid = false;
-            $errors[] = "Email already exists!";  
-          }
+      $query->bindValue( 1, $mail);
+      $query->execute();
+        if( $query->rowCount() > 0 ){ 
+          $isValid = false;
+          $errors[] = "Email already exists!";  
+        }
 
-        $stmt = $pdo->prepare( "SELECT username FROM users WHERE username = :username" );
+      $stmt = $pdo->prepare( "SELECT username FROM users WHERE username = :username" );
 
-          $stmt->bindValue( ':username', $username);
-          $stmt->execute();
+      $stmt->bindValue( ':username', $username);
+      $stmt->execute();
           if( $stmt->rowCount() > 0 ) { 
             $isValid = false;
             $errors[] = "Username already exists!";
           }
   }
 
-  
     if($isValid){
   
     $pdo = config::pdo_connect_mysql();
@@ -75,18 +69,14 @@ if (isset($_POST['register'])) {
       $pdoResult = $pdo->prepare($pdoFormQuery);
       $pdoExec = $pdoResult->execute(array(":username"=>$username,":mail"=>$mail,":password"=>$password));
         // check if mysql insert query successful
-        if($pdoExec)
-        { 
+        if($pdoExec){ 
             echo 'success';
-        }else{
-          echo 'didnt work!';
-          // echo '<script>alert("Något gick fel, försök igen!")</script>';
+          }else{
+            echo 'didnt work!';
         }
-      }
+    }
 
-      }
-        
-    
+}
     ?>
 
 
@@ -104,72 +94,67 @@ if (isset($_POST['register'])) {
     <link rel="stylesheet" type="text/css" href="reg_login.css">
 </head> 
 
-      <body>
-      <img src="./image/Register.jpg" alt="register" class='image'>
-      <div class="register">
+<body>
+    <img src="./image/Register.jpg" alt="register" class='image'>
+  <div class="register">
       <h2>A membership for music lovers</h2>
       <h2>Get pre booked tickets for your favorit artist</h2>
       <h2>As member you always get the best price</h2>
-      
-        
-        <form id="myForm" method="post" action="register.php" name ="registration">
-
-        <?php include('errors.php'); ?>
-          <div class="input-group">
-            <label>Username</label>
-            <input type="text" name="username" value="" placeholder="username">
-          </div>
-
-          <div class="input-group">
-            <label>Email</label>
-            <input type="text" name="mail" value="" placeholder="mail">
-          </div>   
-
-          <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password" onfocus="this.value=''">
-          </div>
-
-          <div class="input-group">
-            <label>Confirm Password</label>
-            <input type="password" name="confirm_password" onfocus="this.value=''">
-          </div>
-
-          <!-- användarvillkor -->
-          <p> Already a member?<a href="index.php?page=login">Log in here
-          </p>
-
-          <div class="userTerms">
-          <input type='checkbox' name='agreement' class='form-check' value='Yes' required>
-          <label for ='agreement' class="form_check_label"><a href='#'>I agree for term, conditions and policy</a>(*)</label>
-          </div>
-
-
+    
+  <form id="myForm" method="post" action="register.php" name ="registration">
+  <?php include('errors.php'); ?>
+    <div class="input-group">
+      <label>Username</label>
+      <input type="text" name="username" value="" placeholder="username">
+    </div>
 
     <div class="input-group">
-            <button type="submit" class= "btn" name="register" value="">Register</button>
+      <label>Email</label>
+      <input type="text" name="mail" value="" placeholder="mail">
+    </div>   
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" name="password" onfocus="this.value=''">
+    </div>
+
+    <div class="input-group">
+      <label>Confirm Password</label>
+      <input type="password" name="confirm_password" onfocus="this.value=''">
+    </div>
+          <!-- användarvillkor -->
+      <p> Already a member?<a href="index.php?page=login">Log in here
+      </p>
+
+    <div class="userTerms">
+      <input type='checkbox' name='agreement' class='form-check' value='Yes' required>
+      <label for ='agreement' class="form_check_label"><a href='#'>I agree for term, conditions and policy</a>(*)</label>
+    </div>
+
+    <div class="input-group">
+      <button type="submit" class= "btn" name="register" value="">Register</button>
     </div>
 
     <div>
         <input type="button" onclick="resetForm()" value="Clear">
     </div>
-    </form> 
+  </form> 
 
-</div>
-    </body>
+  </div>
+</body>
 
 
 <script>
 
 // checkbox terms 
-    // function checkForm(form){
-    // if(!form.agreement.checked) {
-    //       alert("Please indicate that you accept the Terms and Conditions");
-    //       form.terms.focus();
-    //       return false;
-    //     }
-    //     return true;
-    // }
+    function checkForm(form){
+    if(!form.agreement.checked) {
+          alert("Please indicate that you accept the Terms and Conditions");
+          form.terms.focus();
+          return false;
+        }
+        return true;
+    }
 
 // function to clear form
     function resetForm() {
@@ -177,5 +162,4 @@ if (isset($_POST['register'])) {
 }
 
 </script>
-
-      </html>
+</html>
