@@ -205,7 +205,6 @@ if ($products_in_cart) {
         <div class="discount">
         <label for="discount_output">Discount:</label>
         <span class="discount_output"><?=$discount['price']?>kr</span>
-            <!-- <input type="hidden" id="discountOutput"name="discountOutput" value=""> -->
         </div>
 
        
@@ -224,58 +223,20 @@ if ($products_in_cart) {
             <input type="submit" value="Place Order" name="placeorder">
         </div> 
 
-
-
-
 </div>
 
 
 </form>
 </div>
 
+
 <button id ="displayFavo" onclick= "getSome()">Test</button>
-
-<!-- <canvas id="myCanvas"></canvas> -->
-<img src="" id="oFavoritList"></img>
-
-<!-- <button id ="displayFavo" onclick= "getBase64Image()">FavoritList</button> -->
-
+<img id="oFavoritList"></img>
 
 </div>
 
 </body>
  </html>
-
- <script>
- 
- function getSome(){
-
-    var dataImage = localStorage.getItem("myImg");
-    // console.log(dataImage);
-    bannerImg = document.getElementById("oFavoritList");
-    bannerImg.src = dataImage;
-
-
-
- // STEP 1, GET THE IMAGE IN CART.PHP 
-// STEP 2, USE IMG SRC FROM ARRAY 
-        // var img = new Image();
-        // img.src = imgAsDataURL;
-
-        // some = canvas.appendChild(img);
-        // console.log(some);
-
-
-    
-    // var canvas = document.createElement("canvas");
-    // document.getElementById("myCanvas").innerHTML = localStorage.getItem("myImg");
-
- }
-
- 
- 
- </script>
-
 
 
 

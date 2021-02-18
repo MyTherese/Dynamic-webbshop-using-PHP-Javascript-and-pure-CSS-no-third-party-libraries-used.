@@ -34,8 +34,6 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="imagebox">
 
         <img src="image/<?=$recently_added_products[$k]['image']?>" width="250" height="250" id="myImage" alt="<?=$recently_added_products[$k]['title']?>">
-       
-      
         
         <div class="titlebox">
         <span class="name"><?=$recently_added_products[$k]['title']?></span>
@@ -54,11 +52,6 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         </div>
         
-        <canvas id="myCanvas" height="400" width="1000"></canvas>
-        <button onclick = getBase64ArrayOfImg() >Your Favorits</button>
-
-      
-
 </body>
 
 
@@ -67,13 +60,6 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </html>
 <!-- <?=template_footer('footer')?> -->
 
-<script>
-
-
-
-
-
-</script>
 <script type="text/javascript" src="localStorage.js"></script>
 
 
