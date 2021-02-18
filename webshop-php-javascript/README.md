@@ -6,7 +6,8 @@ No third-party libaries in use because of training exercise.
 
 Reflections of methods.
 
-Localstorage: I chose localstorage dispite the limited storage kapacity mostely because of training and understanding client side storage.
+Localstorage: I chose localstorage mostely because of training and understanding of client side storage, dispite the limited storage kapacity.
+
 
 To clone use local web-server.
 
