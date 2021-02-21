@@ -19,12 +19,11 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script> -->
 </head>
     
 <body>
-
 
     <div id="containerImages" class="containerProducts" >
         <?php foreach ($recently_added_products as $k => $v): ?>
@@ -43,22 +42,12 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <button src ="image/<?=$recently_added_products[$k]['image']?>" id ="image/<?=$recently_added_products[$k]['image']?>" onclick="saveFavorit(this.id)" class="fa fa-heart-o">
         </button>
-
-
-
         </div>
-
         <?php endforeach; ?>
 
         </div>
-        
 </body>
-
-
-
-
 </html>
-<!-- <?=template_footer('footer')?> -->
 
 <script type="text/javascript" src="localStorage.js"></script>
 

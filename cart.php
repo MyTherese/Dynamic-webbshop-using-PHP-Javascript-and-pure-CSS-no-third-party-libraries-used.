@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 //add to cart 
 // If the user clicked the add to cart button on the product page we can check for the form data
@@ -72,9 +68,6 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     header('Location: index.php?page=placeorder');
     exit;
 }
-
-
-
 
 // Check the session variable for products in cart.
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
@@ -201,13 +194,10 @@ if ($products_in_cart) {
             <span class="price"><?=$subtotal?>kr</span>
         </div>
 
-
         <div class="discount">
         <label for="discount_output">Discount:</label>
         <span class="discount_output"><?=$discount['price']?>kr</span>
         </div>
-
-       
 
         <div class="subtotal_after_disc">
         <label for="subtotal_after_discount">Total after discount:</label>
@@ -230,17 +220,15 @@ if ($products_in_cart) {
 </div>
 
 
-<button id ="displayFavo" onclick= "getSome()">Test</button>
+<button id ="displayFavo" onclick= "getSome()">Here is your favorites!</button>
 <img id="oFavoritList"></img>
 
 </div>
 
 </body>
- </html>
+</html>
 
-
-
- <script type="text/javascript" src="localStorage.js"></script> 
+<script type="text/javascript" src="localStorage.js"></script> 
 
 
 
