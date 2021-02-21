@@ -25,3 +25,4 @@ Localstorage: I chose localstorage dispite the limited storage kapacity mostely 
 
 
 
+# webbshop-using-PHP-Javascript-and-pure-CSS-no-third-party-libraries-used.
