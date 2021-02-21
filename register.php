@@ -36,7 +36,17 @@ if (isset($_POST['register'])) {
       $errors[] = "Password do not match!";
     }
 
-    // PASSWORD M UST ALSO BE MORE THEN 8 CARACTERS
+
+      $uppercase = preg_match('@[A-Z]@', $password);
+      $lowercase = preg_match('@[a-z]@', $password);
+      $number    = preg_match('@[0-9]@', $password);
+      
+      if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
+        $isValid = false;
+        $errors[] = "Password must contain atleast 8 caracthers of one lowercase uppercase and a number !";
+      }    
+
+  
 
     if($isValid){
 
