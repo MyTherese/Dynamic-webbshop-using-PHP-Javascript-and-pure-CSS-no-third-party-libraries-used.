@@ -6,22 +6,23 @@
         var heartFavorit = document.getElementById(clicked_id);
 
         if(heartFavorit.classList.contains('fa-heart-o')) {
-                heartFavorit.classList.remove('fa-heart-o');
-                heartFavorit.classList.add('fa-heart');
+            heartFavorit.classList.remove('fa-heart-o');
+            heartFavorit.classList.add('fa-heart');
             
-                favoritArray.push(clicked_id);
-            }else{
-                heartFavorit.classList.remove('fa-heart');
-                heartFavorit.classList.add('fa-heart-o');
+            favoritArray.push(clicked_id);
+        }else{
+            heartFavorit.classList.remove('fa-heart');
+            heartFavorit.classList.add('fa-heart-o');
 
                 var index = favoritArray.indexOf(clicked_id);
                 favoritArray.splice(index, 1);
 
                 localStorage.removeItem("yourFavorits");
-    
+
             }
             localStorage.setItem("yourFavorits", JSON.stringify(favoritArray));
     }
+
 
 // cart.js
     function getSome(){
@@ -34,9 +35,7 @@
             img.src = image;                       
             document.body.appendChild(img);         
         });
-
     }
-
 
 //  cart.js
     function validationDiscount() {
