@@ -2,8 +2,6 @@
 
 Note: this is a beginner project!
 
-HELLO
-
 Simple webbshop for concert tickets, using php getting data from mysql database and javascript. 
     Styling is pure CSS for mobile and desktop format. 
     No third-partie libaries in use because of training exercise.
