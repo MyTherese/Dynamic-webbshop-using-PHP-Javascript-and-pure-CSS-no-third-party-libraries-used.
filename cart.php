@@ -15,17 +15,17 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
     // Check if the product exists (array is not empty)
     if ($product && $quantity > 0) {
-        // Product exists in database, now we can create/update the session variable for the cart
+        // create/update the session variable for the cart
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
             if (array_key_exists($product_id, $_SESSION['cart'])) {
-                // Product exists in cart so just update the quanity
+                //update the quanity
                 $_SESSION['cart'][$product_id] += $quantity;
             } else {
                 // Product is not in cart so add it
                 $_SESSION['cart'][$product_id] = $quantity;
             }
         } else {
-            // There are no products in cart, this will add the first product to cart
+            // add the first product to cart
             $_SESSION['cart'] = array($product_id => $quantity);
         }
     }
@@ -36,23 +36,20 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
 }
 ;
 
-// Remove product from cart, check for the URL param "remove", this is the product id, make sure it's a number and check if it's in the cart
+// REMOVE 
 if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['cart']) && isset($_SESSION['cart'][$_GET['remove']])) {
-    // Remove the product from the shopping cart
     unset($_SESSION['cart'][$_GET['remove']]);
 }
 
 
-// UPDATE product quantities in cart if the user clicks the "Update" button on the shopping cart page
+// UPDATE
 if (isset($_POST['update']) && isset($_SESSION['cart'])) {
-    // Loop through the post data so we can update the quantities for every product in cart
     foreach ($_POST as $k => $v) {
         if (strpos($k, 'quantity') !== false && is_numeric($v)) {
             $id = str_replace('quantity-', '', $k);
             $quantity = (int)$v;
-            // Always do checks and validation
+            //validation
             if (is_numeric($id) && isset($_SESSION['cart'][$id]) && $quantity > 0) {
-                // Update new quantity
                 $_SESSION['cart'][$id] = $quantity;
             }
         }
@@ -69,20 +66,19 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     exit;
 }
 
-
-
-
 // Check the session variable for products in cart.
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
 $subtotal = 0.00;
 
+$percentToGet= 20;
+$percentInDecimal = $percentToGet / 100;
+
+
 $discount = $discountOutput;
 $subtotal_after_discount = 0.00;
 
 
-
-// If there are products in cart
 if ($products_in_cart) {
     // There are products in the cart so we need to select those products from the database
     // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
@@ -99,19 +95,23 @@ if ($products_in_cart) {
         $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']];
     }
 
+
+    // check if code exists in database
     if(!empty($_POST["discountCode"])) {
         $stmt_discount = $pdo->prepare("SELECT price FROM discount WHERE code_discount= '" . $_POST["discountCode"] . "'");
     
         $stmt_discount->execute();
         $discount = $stmt_discount->fetch(PDO::FETCH_ASSOC);
-        $message = "Your code is valid!";
+            $message = "Your code is valid!";
 
         if(!empty(!$discount)){
             $message = "Your code is NOT valid!";
 
         }
     }
+
 }
+
 
 
 
@@ -150,7 +150,6 @@ if ($products_in_cart) {
                 
                 <?php else: ?>
                 <?php foreach ($products as $product): ?>
-                  
                 <tr>
                     <td>
                     <a href="index.php?page=cart&remove=<?=$product['id']?>">X</a>
@@ -177,52 +176,46 @@ if ($products_in_cart) {
     <div class="discountTable">
         <div class="subtotal">
         <div class="discount">
-<span id="errorMessage_code" class="error-message">
-				<?php
-				if (!empty($message)) {
+            <span id="errorMessage_code" class="error-message">
+            <?php
+			if (!empty($message)) {
 					echo $message;
-                }
-                ?></span>
+            }
+            ?>
+            </span>
 
-    <label for="promo_code"></label>
-    <input id="discountCode" type="text" name="discountCode" class="discount_code" size="30" placeholder="Apply Discount Code"/>
-    
-    <button id="apply_discount" value="submit" class="buttonDiscount" name="apply_discount">Apply</button>
-
-</div>
-            <input type="hidden" name="totalPrice"
-						id="totalPrice"
-                        value="">
-                        <span class="text">New Total:</span>
-            <span class="price"><?=$subtotal?>kr</span>
+        <label for="promo_code"></label>
+        <input id="discountCode" type="text" name="discountCode" class="discount_code" size="30" placeholder="Apply Discount Code"/>
+        <button id="apply_discount" value="submit" class="buttonDiscount" name="apply_discount">Apply</button>
+    </div>
+        <input type="hidden" name="totalPrice" id="totalPrice" value="">
+        <span class="text">New Total:</span>
+        <span class="price"><?=$subtotal?>kr</span>
         </div>
-
 
         <div class="discount">
         <label for="discount_output">Discount:</label>
-        <span class="discount_output"><?=$discount['price']?>kr</span>
-            <!-- <input type="hidden" id="discountOutput"name="discountOutput" value=""> -->
-        </div>
 
-       
+        <span class="discount_output"><?= $discount['price']?>%</span>
+        </div>
 
         <div class="subtotal_after_disc">
         <label for="subtotal_after_discount">Total after discount:</label>
-            <span class="subtotal_after_discount"><?=$subtotal - $discount['price']?>kr</span>
-            <input type="hidden" name="totalPrice_after_discount"
-						id="totalPrice_after_discount" value="">
-        </div>
 
+
+        <?php if($discount){ ?>
+            <div class="subtotal_after_discount"><?= $subtotal - $percentInDecimal * $subtotal ?>kr</div>
+        <?php } ?>
         
+        <div class="subtotal_after_discount" style="display:none"><?= $subtotal - $percentInDecimal * $subtotal ?>kr</div>
+          
+
+        </div>
 
         <div class="buttons">
             <input type="submit" value="Update" name="update">
             <input type="submit" value="Place Order" name="placeorder">
         </div> 
-
-
-
-
 </div>
 
 
@@ -230,47 +223,23 @@ if ($products_in_cart) {
 </div>
 
 <button id ="displayFavo" onclick= "getSome()">Test</button>
-
-<!-- <canvas id="myCanvas"></canvas> -->
 <img src="" id="oFavoritList"></img>
-
-<!-- <button id ="displayFavo" onclick= "getBase64Image()">FavoritList</button> -->
-
 
 </div>
 
 </body>
- </html>
+</html>
 
- <script>
- 
- function getSome(){
+<script>
+
+    function getSome(){
     var dataImage = localStorage.getItem("myImg");
     console.log(dataImage);
     bannerImg = document.getElementById("oFavoritList");
     bannerImg.src = dataImage;
-
-
-
- // STEP 1, GET THE IMAGE IN CART.PHP 
-// STEP 2, USE IMG SRC FROM ARRAY 
-        // var img = new Image();
-        // img.src = imgAsDataURL;
-
-        // some = canvas.appendChild(img);
-        // console.log(some);
-
-
-    
-    // var canvas = document.createElement("canvas");
-    // document.getElementById("myCanvas").innerHTML = localStorage.getItem("myImg");
-
- }
-
- 
- 
- </script>
- <script type="text/javascript" src="localStorage.js"></script> 
+    }
+</script>
+<script type="text/javascript" src="localStorage.js"></script> 
 
 
 
