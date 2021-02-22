@@ -222,23 +222,13 @@ if ($products_in_cart) {
 </form>
 </div>
 
-<button id ="displayFavo" onclick= "getSome()">Test</button>
+<button id ="displayFavo" onclick= "getSome()">Your favorites!</button>
 <img src="" id="oFavoritList"></img>
 
 </div>
 
 </body>
 </html>
-
-<script>
-
-    function getSome(){
-    var dataImage = localStorage.getItem("myImg");
-    console.log(dataImage);
-    bannerImg = document.getElementById("oFavoritList");
-    bannerImg.src = dataImage;
-    }
-</script>
 <script type="text/javascript" src="localStorage.js"></script> 
 
 

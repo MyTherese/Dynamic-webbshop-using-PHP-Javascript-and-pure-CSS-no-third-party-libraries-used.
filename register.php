@@ -4,10 +4,6 @@ session_start();
 include_once 'server.php';
 require 'errors.php';
 $errors = array();
-// $username = "";
-// $mail = "";
-// $password = "";
-// $confirm_password = "";
 
 // validation and user data saved in database 
 if (isset($_POST['register'])) {
@@ -18,10 +14,7 @@ if (isset($_POST['register'])) {
   $confirm_password  = trim($_POST['confirm_password']);
 
   $isValid = true;
-    if (is_bool($isValid) === true){
-      echo "Yes is a boolean";
-    }
-
+    
     if($username == '' || $mail == '' || $password == '' || $confirm_password == ''){
       $isValid = false;
       $errors[] = "Please fill all fields.";
@@ -47,7 +40,6 @@ if (isset($_POST['register'])) {
       }    
 
   
-
     if($isValid){
 
       $pdo = config::pdo_connect_mysql();
@@ -80,9 +72,11 @@ if (isset($_POST['register'])) {
       $pdoExec = $pdoResult->execute(array(":username"=>$username,":mail"=>$mail,":password"=>$password));
         // check if mysql insert query successful
         if($pdoExec){ 
-            echo 'success';
+            header('location:login.php');
+            $errors[] = "Success";
           }else{
-            echo 'didnt work!';
+            $errors[] = "Something went wrong!";
+            
         }
     }
 
@@ -107,9 +101,9 @@ if (isset($_POST['register'])) {
 <body>
     <img src="./image/Register.jpg" alt="register" class='image'>
   <div class="register">
-      <h2>A membership for music lovers</h2>
-      <h2>Get pre booked tickets for your favorit artist</h2>
-      <h2>As member you always get the best price</h2>
+      <h2>A membership for music lovers!</h2>
+      <h2>Get pre booked tickets for your favorit artist!</h2>
+      <h2>As member you always get the best price!</h2>
     
   <form id="myForm" method="post" action="register.php" name ="registration">
   <?php include('errors.php'); ?>

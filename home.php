@@ -1,4 +1,3 @@
-
 <?php
 $stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_added DESC LIMIT 6');
 $stmt->execute();
@@ -14,9 +13,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script> -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
 </head>
     
 <body>
@@ -36,14 +33,9 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </button>
 
         </div>
-
         <?php endforeach; ?>
 
     </div>
-        
-        <canvas id="myCanvas" height="400" width="600"></canvas>
-        <button onclick = getBase64ArrayOfImg() >Your Favorits</button>
-
 </body>
 
 
