@@ -1,70 +1,41 @@
 // home.php
+    const favoritArray = [];
 
-const favoritArray = [];
-// console.log(favoritArray);
+    function saveFavorit(clicked_id) {
 
-function saveFavorit(clicked_id) {
-    var heartFavorit = document.getElementById(clicked_id);
-    console.log(heartFavorit);
-
-    // var test = document.querySelector("img");
-    // console.log(test);
+        var heartFavorit = document.getElementById(clicked_id);
 
         if(heartFavorit.classList.contains('fa-heart-o')) {
-                heartFavorit.classList.remove('fa-heart-o');
-                heartFavorit.classList.add('fa-heart');
+            heartFavorit.classList.remove('fa-heart-o');
+            heartFavorit.classList.add('fa-heart');
             
-                some = favoritArray.push(clicked_id);
-                console.log(some);
-
-            }else {
+            favoritArray.push(clicked_id);
+        }else{
             heartFavorit.classList.remove('fa-heart');
             heartFavorit.classList.add('fa-heart-o');
 
-            const index = favoritArray.indexOf(clicked_id);
-            favoritArray.splice(index, 1);
-            console.log(index);
+                var index = favoritArray.indexOf(clicked_id);
+                favoritArray.splice(index, 1);
+
+                localStorage.removeItem("yourFavorits");
 
             }
-
-    }
-
-// home.php
-    function getBase64ArrayOfImg() {
-    var favoritList = favoritArray;
-    // console.log(favoritList);
-
-    var canvas= document.getElementById("myCanvas");
-    imgContext = canvas.getContext("2d");
-
-    var xb=0, yb=0;
-    var imgs = [];   
-
-    for(var i = 0; i < favoritList.length; i++){
-        imgs[i] = new Image();
-        imgs[i].src =favoritList[i];
-
-        imgs[i].onload = function(){
-            console.log(imgs[i]);
-            something = imgContext.drawImage(this, xb, yb);
-            xb += 200;
-            yb += 0;
-
-            imgAsDataURL = canvas.toDataURL("data:image/jpg;base64,");
-            // console.log(imgAsDataURL);
-            localStorage.setItem("myImg", imgAsDataURL);
-            // console.log(localStorage);
-            var dataImage = localStorage.getItem("myImg");
-            // console.log(dataImage); 
-        }
-    }
-
+            localStorage.setItem("yourFavorits", JSON.stringify(favoritArray));
     }
 
 
+// cart.js
+    function getSome(){
 
+        container =  document.getElementById("oFavoritList");
+        var dataImage = JSON.parse(localStorage.getItem('yourFavorits') );
 
-
+        dataImage.forEach(function(image) {    
+            var img = document.createElement('img'); 
+            img.src = image;                       
+            document.body.appendChild(img);         
+        });
+    }
 
 //  cart.js
     function validationDiscount() {
@@ -76,11 +47,4 @@ function saveFavorit(clicked_id) {
             $('#errorMessage_code').text("Discount Coupon Required");
         }
         return valid;
-    }  
-
-
-
-
-
-
-
+    } 
