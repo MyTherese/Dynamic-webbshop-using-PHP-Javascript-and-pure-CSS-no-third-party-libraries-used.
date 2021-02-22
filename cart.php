@@ -66,6 +66,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     exit;
 }
 
+
 // Check the session variable for products in cart.
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
@@ -95,7 +96,6 @@ if ($products_in_cart) {
         $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']];
     }
 
-
     // check if code exists in database
     if(!empty($_POST["discountCode"])) {
         $stmt_discount = $pdo->prepare("SELECT price FROM discount WHERE code_discount= '" . $_POST["discountCode"] . "'");
@@ -111,10 +111,6 @@ if ($products_in_cart) {
     }
 
 }
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -171,8 +167,10 @@ if ($products_in_cart) {
         </table>
 
 
-
-
+        <?php if($_SESSION['username']){ ?>
+            <div class="firstTimeDiscount">Discount code: C_USB02</div>
+        <?php } ?>
+ 
     <div class="discountTable">
         <div class="subtotal">
         <div class="discount">
@@ -188,10 +186,15 @@ if ($products_in_cart) {
         <input id="discountCode" type="text" name="discountCode" class="discount_code" size="30" placeholder="Apply Discount Code"/>
         <button id="apply_discount" value="submit" class="buttonDiscount" name="apply_discount">Apply</button>
     </div>
+    
         <input type="hidden" name="totalPrice" id="totalPrice" value="">
         <span class="text">New Total:</span>
         <span class="price"><?=$subtotal?>kr</span>
         </div>
+
+        <?php if($_SESSION['$username']){ ?>
+            <div class="subtotal_after_discount"><?= $subtotal - $percentInDecimal * $subtotal ?>kr</div>
+        <?php } ?>
 
         <div class="discount">
         <label for="discount_output">Discount:</label>
@@ -208,8 +211,6 @@ if ($products_in_cart) {
         <?php } ?>
         
         <div class="subtotal_after_discount" style="display:none"><?= $subtotal - $percentInDecimal * $subtotal ?>kr</div>
-          
-
         </div>
 
         <div class="buttons">

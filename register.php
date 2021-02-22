@@ -73,7 +73,7 @@ if (isset($_POST['register'])) {
         // check if mysql insert query successful
         if($pdoExec){ 
             header('location:login.php');
-            $errors[] = "Success";
+            // $errors[] = "Success";
           }else{
             $errors[] = "Something went wrong!";
             
@@ -163,7 +163,7 @@ if (isset($_POST['register'])) {
 // function to clear form
     function resetForm() {
     document.getElementById("myForm").reset();
-}
+    }
 
 </script>
 </html>

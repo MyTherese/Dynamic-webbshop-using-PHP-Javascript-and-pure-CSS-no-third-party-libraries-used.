@@ -1,8 +1,6 @@
 <?php  
      session_start(); 
      include_once 'server.php';
-//  include 'server.php'; 
-
      $HOST = 'localhost';
      $USER = 'root';
      $PASS = 'root';
@@ -10,36 +8,25 @@
 
      $errors = array();
 
-     try  
-     {  
-     $pdo = new PDO("mysql:host=$HOST;dbname=$NAME", $USER, $PASS);
-     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
+     try {  
+          $pdo = new PDO("mysql:host=$HOST;dbname=$NAME", $USER, $PASS);
+          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
 
-     if(isset($_POST['login']))  
-     
-     {  
-          if(empty($_POST["username"]) || empty($_POST["password"]))  
-          {  
+     if(isset($_POST['login'])) {  
+          if(empty($_POST["username"]) || empty($_POST["password"])) {  
                $errors[] = '<label>All fields are required</label>';  
-          }  
-          else  
-          {  
+          }else {  
                $query = "SELECT * FROM users WHERE username = :username AND password = :password";  
                $statement = $pdo->prepare($query);  
                $statement->execute(  
                     array(  
                          'username' => $_POST["username"],  
-                         'password' => $_POST["password"]  
-                    )  
-               );  
+                         'password' => $_POST["password"]));  
                $count = $statement->rowCount();  
-               if($count > 0)  
-               {  
+               if($count > 0) {  
                     $_SESSION["username"] = $_POST["username"];  
                     header("location:index.php");  
-               }  
-               else  
-               { 
+               }else { 
                     $errors[] = '<label>Wrong Data</label>';  
                }  
           }  
@@ -64,8 +51,6 @@
 
      <body>
      <img src="./image/Register.jpg" alt="register" class='image'>
-
-
      <div class="login">
      <h2>Login</h2>
      <?php 
@@ -74,21 +59,21 @@
           }
      ?> 
 
-          <form id='logForm' method="post" action="login.php"> 
+     <form id='logForm' method="post" action="login.php"> 
 
-     <?php include('errors.php'); ?>
-
-          <div class="input-group">
-               <label for='username'>Username</label>
-               <input type="text" name="username" onfocus="this.value=''">
-          </div>
-
+          <?php include('errors.php'); ?>
 
           <div class="input-group">
-               <label for='password'>Password</label>
-               <input type="password" name="password" id="password" onfocus="this.value=''">
-               <i class="fa fa-eye" id="togglePassword"></i>
+          <label for='username'>Username</label>
+          <input type="text" name="username" onfocus="this.value=''">
           </div>
+
+          <div class="input-group">
+          <label for='password'>Password</label>
+          <input type="password" name="password" id="password" onfocus="this.value=''">
+          <i class="fa fa-eye" id="togglePassword"></i>
+          </div>
+          
           <div class="input-group">
                <button type="submit" name="login" class="btn" value ="">Confirm</button>
           </div>
@@ -96,8 +81,7 @@
           <p> Not yet a member?<a href="index.php?page=register">Sign up</a>
 
           </p>
-          <!-- <p>Kommer du inte ihåg ditt lösenord?</p> -->
-          </form>
+     </form>
      <div>
      </body>
 
@@ -106,18 +90,14 @@
      const togglePassword = document.querySelector('#togglePassword');
      const password = document.querySelector('#password');
 
-          togglePassword.addEventListener('click', function (e) {
-            // toggle the type attribute
+     togglePassword.addEventListener('click', function (e) {
           const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
           password.setAttribute('type', type);
-            // toggle the eye 
           this.classList.toggle("fa-eye-slash");
      });
 
-
-// function to clear form
      function resetForm() {
           document.getElementById("logForm").reset();
-}
+     }
      </script>
      </html>
