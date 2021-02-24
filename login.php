@@ -84,20 +84,5 @@
      </form>
      <div>
      </body>
-
-     <script>
-
-     const togglePassword = document.querySelector('#togglePassword');
-     const password = document.querySelector('#password');
-
-     togglePassword.addEventListener('click', function (e) {
-          const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-          password.setAttribute('type', type);
-          this.classList.toggle("fa-eye-slash");
-     });
-
-     function resetForm() {
-          document.getElementById("logForm").reset();
-     }
-     </script>
+     <script type="text/javascript" src="localStorage.js"></script>
      </html>

@@ -60,6 +60,5 @@ if (isset($_GET['id'])) {
 
 
 </body>
-</html>
-
 <script type="text/javascript" src="localStorage.js"></script>
+</html>

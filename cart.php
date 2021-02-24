@@ -229,9 +229,8 @@ if ($products_in_cart) {
 </div>
 
 </body>
-</html>
 <script type="text/javascript" src="localStorage.js"></script> 
-
+</html>
 
 
 

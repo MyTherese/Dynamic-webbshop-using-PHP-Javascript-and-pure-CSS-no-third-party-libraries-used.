@@ -140,6 +140,5 @@ if (isset($_POST['register'])) {
 
   </div>
 </body>
-
 <script type="text/javascript" src="localStorage.js"></script>
 </html>

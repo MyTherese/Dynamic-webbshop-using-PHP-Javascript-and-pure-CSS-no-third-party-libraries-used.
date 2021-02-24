@@ -82,8 +82,19 @@
         }
     }
 
+//login.php
+    togglePassword.addEventListener('click', function (e) {
+        var togglePassword = document.querySelector('#togglePassword');
+        var password = document.querySelector('#password');
 
+        var type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle("fa-eye-slash");
+    });
 
+    function resetForm() {
+        document.getElementById("logForm").reset();
+    }
 
 
 
