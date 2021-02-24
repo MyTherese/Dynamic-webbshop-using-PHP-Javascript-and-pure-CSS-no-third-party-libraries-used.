@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="productCard.css" rel="stylesheet" type="text/css">
+    <link href="./css/productCard.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 <body>
@@ -62,28 +62,4 @@ if (isset($_GET['id'])) {
 </body>
 </html>
 
-<script>
-
-
-const toggleText = document.getElementById("text");
-
-    
-function showText(change_it){
-
-const hide = document.getElementById('hideShow');
-console.log(hide);
-
-    if(hide.classList.contains('fa-arrow-down')) {
-        hide.classList.remove('fa-arrow-down');
-                hide.classList.add('fa-arrow-up');
-                toggleText.style.display = "block";
-
-    }else{ 
-    hide.classList.remove('fa-arrow-up');
-            hide.classList.add('fa-arrow-down');  
-            toggleText.style.display = "none";
-
-    }
-}
-
-</script>
+<script type="text/javascript" src="localStorage.js"></script>

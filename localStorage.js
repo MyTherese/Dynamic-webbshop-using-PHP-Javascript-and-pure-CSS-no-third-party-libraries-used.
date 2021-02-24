@@ -48,3 +48,43 @@
         }
         return valid;
     } 
+
+
+
+// register.php 
+    function checkForm(form){
+        if(!form.agreement.checked) {
+            alert("Please indicate that you accept the Terms and Conditions");
+            form.terms.focus();
+            return false;
+            }
+            return true;
+    }
+    function resetForm() {
+        document.getElementById("myForm").reset();
+    }
+
+
+// productCard.php
+    function showText(){
+        var toggleText = document.getElementById("text");
+        var hide = document.getElementById('hideShow');
+        
+        if(hide.classList.contains('fa-arrow-down')) {
+            hide.classList.remove('fa-arrow-down');
+            hide.classList.add('fa-arrow-up');
+            toggleText.style.display = "block";
+        
+        }else{ 
+            hide.classList.remove('fa-arrow-up');
+            hide.classList.add('fa-arrow-down');  
+            toggleText.style.display = "none";
+        }
+    }
+
+
+
+
+
+
+

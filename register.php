@@ -24,15 +24,15 @@ if (isset($_POST['register'])) {
       $isValid = false;
       $errors[] = "Invalid Email-ID.";
     }
+
     if($isValid && ($password != $confirm_password)){
       $isValid = false;
       $errors[] = "Password do not match!";
     }
 
-
-      $uppercase = preg_match('@[A-Z]@', $password);
-      $lowercase = preg_match('@[a-z]@', $password);
-      $number    = preg_match('@[0-9]@', $password);
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
       
       if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
         $isValid = false;
@@ -60,7 +60,7 @@ if (isset($_POST['register'])) {
             $isValid = false;
             $errors[] = "Username already exists!";
           }
-  }
+    }
 
     if($isValid){
   
@@ -84,10 +84,6 @@ if (isset($_POST['register'])) {
     ?>
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +91,7 @@ if (isset($_POST['register'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <title>User registration PHP</title>
-    <link rel="stylesheet" type="text/css" href="reg_login.css">
+    <link rel="stylesheet" type="text/css" href="./css/reg_login.css">
 </head> 
 
 <body>
@@ -126,10 +122,8 @@ if (isset($_POST['register'])) {
       <label>Confirm Password</label>
       <input type="password" name="confirm_password" onfocus="this.value=''">
     </div>
-          <!-- användarvillkor -->
-      <p> Already a member?<a href="index.php?page=login">Log in here
-      </p>
 
+      <p> Already a member?<a href="index.php?page=login">Log in here</p>
     <div class="userTerms">
       <input type='checkbox' name='agreement' class='form-check' value='Yes' required>
       <label for ='agreement' class="form_check_label"><a href='#'>I agree for term, conditions and policy</a>(*)</label>
@@ -147,23 +141,5 @@ if (isset($_POST['register'])) {
   </div>
 </body>
 
-
-<script>
-
-// checkbox terms 
-    function checkForm(form){
-    if(!form.agreement.checked) {
-          alert("Please indicate that you accept the Terms and Conditions");
-          form.terms.focus();
-          return false;
-        }
-        return true;
-    }
-
-// function to clear form
-    function resetForm() {
-    document.getElementById("myForm").reset();
-    }
-
-</script>
+<script type="text/javascript" src="localStorage.js"></script>
 </html>

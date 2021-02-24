@@ -38,12 +38,8 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     </div>
 </body>
-
-
-
-
 </html>
-<!-- <?=template_footer('footer')?> -->
+
 
 <script type="text/javascript" src="localStorage.js"></script>
 
