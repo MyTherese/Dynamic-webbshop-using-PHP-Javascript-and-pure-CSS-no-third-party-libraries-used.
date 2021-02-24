@@ -23,15 +23,23 @@ echo "connected";
 
 
 
+
+
+
 function template_header($title) {
 // Get the amount of items in the shopping cart, this will be displayed in the header.
 $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 // when logged in show logged out
 $logged_out = !empty($_SESSION['username']) ? 
-      '<a href="logout.php">Logout</a>' :
-      '<a href="login.php" class="login">Login</a>';
+    '<a href="logout.php">Logout</a>' :
+    '<a href="login.php" class="login">Login</a>';
       
-$greet_newuser = $_SESSION['username'];  
+
+$greet_welcome = $_SESSION['username'];
+$greet_newuser = isset($_SESSION['username']) ? 
+    '<div class=welcome>Welcome</div>' .  $greet_welcome : ''
+    ;
+    
 
 echo <<<EOT
 <!DOCTYPE html>
@@ -50,8 +58,6 @@ echo <<<EOT
         <source src="./image/rock.mp4" type="video/mp4"/>
         <li><a href="index.php" class="logo">Experience Music</a></li>
         </video>
-
-       
 
         <div class="greetMessage">$greet_newuser</div>
         <div class="newsHeader">News for 2021</div>

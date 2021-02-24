@@ -48,13 +48,16 @@ video {
 }
 
 .greetMessage{
+    display: flex;
     position: absolute;
     color:white;
     left: 50%;
     top: 20%;
     transform: translate(-50%, -50%);
-    align-items: center;
     font-size: 30px;
+}
+.welcome{
+    margin-right: 10;
 }
 
 .bannerDiscount{
