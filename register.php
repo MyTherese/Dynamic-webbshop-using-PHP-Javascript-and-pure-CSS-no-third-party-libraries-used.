@@ -73,7 +73,6 @@ if (isset($_POST['register'])) {
         // check if mysql insert query successful
         if($pdoExec){ 
             header('location:login.php');
-            // $errors[] = "Success";
           }else{
             $errors[] = "Something went wrong!";
             
