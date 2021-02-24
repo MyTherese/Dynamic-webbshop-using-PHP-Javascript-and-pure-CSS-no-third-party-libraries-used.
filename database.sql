@@ -1,4 +1,4 @@
-
+-- for project i used phpmyadmin and mamp
 
 CREATE DATABASE `tickets`;
 
