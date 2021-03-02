@@ -26,3 +26,4 @@ Localstorage: I chose localstorage dispite the limited storage kapacity mostely 
 
 
 # webbshop-using-PHP-Javascript-and-pure-CSS-no-third-party-libraries-used.
+![Screenshot 2021-03-02 at 17 42 38](https://user-images.githubusercontent.com/45667980/109682458-ba805380-7b7e-11eb-9dfc-c716d14ccab6.png)
