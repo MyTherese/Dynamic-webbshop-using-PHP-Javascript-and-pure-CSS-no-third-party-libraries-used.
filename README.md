@@ -1,6 +1,6 @@
 # Webbshop-in-PHP-javascript-and-pure-css-no-third-parties.
 
-Note: this is a beginner project!
+
 
 Simple webbshop for concert tickets, using php getting data from mysql database and javascript. 
     Styling is pure CSS for mobile and desktop format. 
