@@ -1,4 +1,4 @@
-# Webbshop-in-PHP-javascript-and-pure-css-no-third-parties.
+# Webshop-in-PHP-javascript-and-pure-css-no-third-parties.
 
 
 
